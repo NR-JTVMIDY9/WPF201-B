@@ -1,0 +1,35 @@
+﻿<Application x:Class="SymBank.MyApp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Startup="Application_Startup"
+    DispatcherUnhandledException="Application_DispatcherUnhandledException"
+    ShutdownMode="OnMainWindowClose"
+    StartupUri="Shell.xaml">
+    <Application.Resources>
+        <BitmapImage x:Key="SymBankIcon" UriSource="Themes/Images/SymBank.ico" />
+        <BitmapImage x:Key="NotepadImage" UriSource="Themes/Images/notepad.png" />
+        <BitmapImage x:Key="UserAddImage" UriSource="Themes/Images/user_add.png" />
+        <BitmapImage x:Key="SearchImage" UriSource="Themes/Images/search.png" />
+        <BitmapImage x:Key="MoneyImage" UriSource="Themes/Images/money.png" />
+        <BitmapImage x:Key="TableImage" UriSource="Themes/Images/table.png" />
+        <BitmapImage x:Key="BankGoImage" UriSource="Themes/Images/bank_go.png" />
+        <BitmapImage x:Key="WorldGoImage" UriSource="Themes/Images/world_go.png" />
+        <BitmapImage x:Key="OpenImage" UriSource="Themes/Images/open.png" />
+        <BitmapImage x:Key="SaveImage" UriSource="Themes/Images/save.png" />
+        <BitmapImage x:Key="CancelImage" UriSource="Themes/Images/cancel.png" />
+        <BitmapImage x:Key="RefreshImage" UriSource="Themes/Images/refresh.png" />
+        <BitmapImage x:Key="PreviousImage" UriSource="Themes/Images/previous.png" />
+        <BitmapImage x:Key="NextImage" UriSource="Themes/Images/next.png" />
+        <BitmapImage x:Key="CutImage" UriSource="Themes/Images/cut.png" />
+        <BitmapImage x:Key="PasteImage" UriSource="Themes/Images/paste.png" />
+        <BitmapImage x:Key="TextBoldImage" UriSource="Themes/Images/text_bold.png" />
+        <BitmapImage x:Key="TextItalicImage" UriSource="Themes/Images/text_italic.png" />
+        <BitmapImage x:Key="TextUnderlineImage" UriSource="Themes/Images/text_underline.png" />
+        <BitmapImage x:Key="AlignLeftImage" UriSource="Themes/Images/align_left.png" />
+        <BitmapImage x:Key="AlignRightImage" UriSource="Themes/Images/align_right.png" />
+        <BitmapImage x:Key="AlignCenterImage" UriSource="Themes/Images/align_center.png" />
+        <BitmapImage x:Key="AlignJustifyImage" UriSource="Themes/Images/align_justify.png" />
+        <BitmapImage x:Key="ErrorImage" UriSource="Themes/Images/error.png" />
+        <BitmapImage x:Key="PrintImage" UriSource="Themes/Images/print.png" />
+    </Application.Resources>
+</Application>

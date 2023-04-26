@@ -1,0 +1,62 @@
+﻿<v:BaseView x:Class="SymBank.Views.TextEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:SymBank.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+            Header="Untitled" Region="MainRegion">
+    <v:BaseView.CommandBindings>
+        <CommandBinding x:Name="cmdOpen"        
+            Command="ApplicationCommands.Open"
+            CanExecute="CmdOpen_CanExecute"                        
+            Executed="CmdOpen_Executed" />
+        <CommandBinding x:Name="cmdSave"
+            Command="ApplicationCommands.Save"
+            CanExecute="CmdSave_CanExecute"
+            Executed="CmdSave_Executed" />
+    </v:BaseView.CommandBindings>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="ApplicationCommands.Open">
+                <Image Stretch="None" Source="{StaticResource OpenImage}" />
+            </Button>
+            <Button Command="ApplicationCommands.Save">
+                <Image Stretch="None" Source="{StaticResource SaveImage}" />
+            </Button>
+            <Separator />
+            <Button Command="EditingCommands.AlignLeft">
+                <Image Stretch="None" Source="{StaticResource AlignLeftImage}" />
+            </Button>
+            <Button Command="EditingCommands.AlignCenter">
+                <Image Stretch="None" Source="{StaticResource AlignCenterImage}" />
+            </Button>
+            <Button Command="EditingCommands.AlignRight">
+                <Image Stretch="None" Source="{StaticResource AlignRightImage}" />
+            </Button>
+            <Separator />
+            <Button Command="EditingCommands.ToggleBold">
+                <Image Stretch="None" Source="{StaticResource TextBoldImage}" />
+            </Button>
+            <Button Command="EditingCommands.ToggleItalic">
+                <Image Stretch="None" Source="{StaticResource TextItalicImage}" />
+            </Button>
+            <Button Command="EditingCommands.ToggleUnderline">
+                <Image Stretch="None" Source="{StaticResource TextUnderlineImage}" />
+            </Button>
+            <Separator />
+            <Button Command="ApplicationCommands.Cut">
+                <Image Stretch="None" Source="{StaticResource CutImage}" />
+            </Button>
+            <Button Command="ApplicationCommands.Paste">
+                <Image Stretch="None" Source="{StaticResource PasteImage}" />
+            </Button>
+            <Separator />
+            <Button x:Name="btnClose" Click="BtnClose_Click">
+                <Image Stretch="None" Source="{StaticResource CancelImage}" />
+            </Button>
+        </ToolBar>
+        <RichTextBox x:Name="txtDocument" />
+    </DockPanel>
+</v:BaseView>

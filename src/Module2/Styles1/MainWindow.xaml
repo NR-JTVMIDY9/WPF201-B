@@ -1,0 +1,48 @@
+﻿<Window x:Class="Styles1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Styles1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="brush1"
+                        StartPoint="0,0"
+                        EndPoint="0,1">
+            <GradientStop Color="SteelBlue" Offset="0" />
+            <GradientStop Color="LightSteelBlue" Offset="0.25" />
+            <GradientStop Color="LightSteelBlue" Offset="0.75" />
+            <GradientStop Color="SteelBlue" Offset="1" />
+        </LinearGradientBrush>
+        <Style x:Key="style1" TargetType="Control">
+            <Setter Property="FontFamily" Value="Georgia" />
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Width" Value="128" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="BorderBrush" Value="SteelBlue" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource brush1}" />
+        </Style>
+        <Style x:Key="style2" TargetType="Button"
+               BasedOn="{StaticResource style1}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+    </Window.Resources>
+    <StackPanel Background="Black">
+        <Button Style="{StaticResource style1}" Content="Button1" />
+        <Button Style="{StaticResource style1}" Content="Button2" />
+        <Button Style="{StaticResource style1}" Content="Button3" />
+        <Button Style="{StaticResource style1}" Content="Button4" />
+        <Button Style="{StaticResource style1}" Content="Button5"
+               Margin="8" Height="48" BorderBrush="Red" />
+        <Label Style="{StaticResource style1}" Content="Label1" />
+        <RadioButton Style="{StaticResource style1}" Content="Option1" IsChecked="True" />
+        <CheckBox Style="{StaticResource style1}" Content="Check1" IsChecked="True" />
+        <Button Style="{StaticResource style2}" Content="Button6" />
+    </StackPanel>
+</Window>

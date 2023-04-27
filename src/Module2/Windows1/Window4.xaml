@@ -1,0 +1,36 @@
+﻿<Window x:Class="Windows1.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Windows1"
+        mc:Ignorable="d"
+        Title="Canvas" Height="450" Width="800">
+    <Canvas>
+        <Button 
+            Canvas.Left="8"
+            Canvas.Top="8"
+            Width="96" Height="24"
+            Content="Button1" />
+        <Button 
+            Canvas.Left="108"
+            Canvas.Top="22"
+            Width="96" Height="24"
+            Content="Button2" />
+        <Button 
+            Canvas.Left="8"
+            Canvas.Top="36"
+            Width="96" Height="24"
+            Content="Button3" />
+        <Button 
+            Canvas.Left="108"
+            Canvas.Top="50"
+            Width="96" Height="24"
+            Content="Button4" />
+        <Button 
+            Canvas.Left="58"
+            Canvas.Top="64"
+            Width="96" Height="24"
+            Content="Button5" />
+    </Canvas>
+</Window>

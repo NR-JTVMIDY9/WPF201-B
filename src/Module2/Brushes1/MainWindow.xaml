@@ -1,0 +1,61 @@
+﻿<Window x:Class="Brushes1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Brushes1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <!--<LinearGradientBrush x:Key="brush1" StartPoint="1,1" EndPoint="0,0">
+            <GradientStop Color="Red" Offset="0" />
+            <GradientStop Color="Blue" Offset="0.35" />
+            <GradientStop Color="Green" Offset="0.65" />
+            <GradientStop Color="Yellow" Offset="1" />
+        </LinearGradientBrush>-->
+    </Window.Resources>
+    <StackPanel x:Name="Panel1">
+        <StackPanel.Resources>
+        </StackPanel.Resources>
+        <TextBlock
+            Text="Welcome to XAML!"
+            FontFamily="Georgia"
+            FontSize="36"
+            Foreground="LightSteelBlue"
+            Margin="8" />
+        <TextBlock
+            Text="Welcome to XAML!"
+            FontFamily="Georgia"
+            FontSize="36"
+            Foreground="#fb8500"
+            Margin="8" />
+        <TextBlock
+            Text="Welcome to XAML!"
+            FontFamily="Georgia"
+            FontSize="36"
+            Margin="8">
+            <TextBlock.Foreground>
+                <SolidColorBrush x:Name="brush1" Color="#CCD5AE" />
+            </TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock
+            Text="Welcome to XAML!"
+            FontFamily="Georgia"
+            Foreground="{StaticResource brush1}"
+            FontSize="36"
+            Margin="8" />
+        <TextBlock
+            Text="Welcome to XAML!"
+            FontFamily="Georgia"
+            Foreground="{StaticResource brush1}"
+            FontSize="36"
+            Margin="8" />
+        <Rectangle Stroke="Black" Fill="{StaticResource brush1}"
+                   Width="100" Height="100" />
+        <Button Foreground="White"
+                Background="{StaticResource brush1}"
+                Width="96" Height="32"
+                Margin="8" Content="Button" />
+    </StackPanel>
+</Window>

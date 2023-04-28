@@ -1,0 +1,76 @@
+﻿<Window x:Class="Animation3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Animation3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <BounceEase x:Key="ease1"
+                    EasingMode="EaseOut"
+                    Bounciness="2" Bounces="5" />
+        <Storyboard x:Key="sb1"
+            Completed="sb1_Completed">
+            <DoubleAnimation
+                Storyboard.TargetName="shape1"
+                Storyboard.TargetProperty="(Canvas.Left)"
+                Duration="00:00:03" From="0" To="200"
+                RepeatBehavior="2x" AutoReverse="True">
+                <DoubleAnimation.EasingFunction>
+                    <BounceEase EasingMode="EaseOut"
+                        Bounciness="2" Bounces="5" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="sb2"
+            Completed="sb2_Completed">
+            <DoubleAnimation
+                Storyboard.TargetName="shape2"
+                Storyboard.TargetProperty="(Canvas.Left)"
+                Duration="00:00:03" From="0" To="200"
+                RepeatBehavior="2x" AutoReverse="True" />
+        </Storyboard>
+        <Storyboard x:Key="sb3"
+            BeginTime="00:00:04"
+            Duration="00:00:28"
+            RepeatBehavior="Forever">
+            <DoubleAnimation
+                Storyboard.TargetName="shape1"
+                Storyboard.TargetProperty="(Canvas.Left)"
+                Duration="00:00:03" By="200"
+                RepeatBehavior="2x" AutoReverse="True"
+                EasingFunction="{StaticResource ease1}"/>
+            <DoubleAnimation
+                BeginTime="00:00:12"
+                Storyboard.TargetName="shape2"
+                Storyboard.TargetProperty="(Canvas.Left)"
+                Duration="00:00:03" By="200"
+                RepeatBehavior="2x" AutoReverse="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource sb3}" />
+        </EventTrigger>
+    </Window.Triggers>
+    <Canvas>
+        <Line X1="200" Y1="0" X2="200" Y2="100" Stroke="Black" StrokeThickness="2" />
+        <Line X1="240" Y1="0" X2="240" Y2="100" Stroke="Black" StrokeThickness="2" />
+        <Ellipse x:Name="shape1"
+                 Canvas.Top="0"
+                 Canvas.Left="0"
+                 Width="32" Height="32"
+                 Fill="Red" Margin="4" />
+        <Ellipse x:Name="shape2"
+                 Canvas.Top="40"
+                 Canvas.Left="40"
+                 Width="32" Height="32"
+                 Fill="Blue" Margin="4" />
+    </Canvas>
+</Window>

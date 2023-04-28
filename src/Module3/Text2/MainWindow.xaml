@@ -1,0 +1,113 @@
+﻿<Window x:Class="Text2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Text2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button x:Name="btnPrint" Content="Print..."
+                    Click="BtnPrint_Click" />
+        </ToolBar>
+        <FlowDocumentReader
+        x:Name="docViewer"
+        Margin="4"
+        BorderThickness="2"
+        BorderBrush="SteelBlue">
+            <FlowDocument
+            IsOptimalParagraphEnabled="True"
+            IsHyphenationEnabled="True">
+                <Paragraph>
+                    A
+                    <Bold>FlowDocument</Bold> unlike a
+                    <Bold>TextBlock</Bold> can contain a list of
+                    <Italic>block elements</Italic> rather than
+                a list of
+                    <Italic>inline elements</Italic> .
+                    <Figure Background="Azure"
+                        BorderThickness="1"
+                        BorderBrush="SteelBlue"
+                        Width="0.25 column"
+                        Height="0.25 page"
+                        HorizontalOffset="100"
+                        VerticalOffset="50"
+                        HorizontalAnchor="PageLeft"
+                        VerticalAnchor="PageCenter">
+                        <Paragraph Foreground="Red">
+                            Here I Am!
+                        </Paragraph>
+                    </Figure>
+                </Paragraph>
+                <Paragraph>
+                    <Floater Background="Azure"
+                        BorderThickness="1"
+                        BorderBrush="SteelBlue"
+                        HorizontalAlignment="Right"
+                        Width="100">
+                        <Paragraph Foreground="Red">
+                            Here I Am!
+                        </Paragraph>
+                    </Floater>
+
+                    To assign inline text elements, you must use
+The
+                    <Bold>Paragraph</Bold> block element. There
+are also other block elements that you can use
+to make a list or table.
+                </Paragraph>
+                <Paragraph BreakColumnBefore="True">
+                    You can use a
+                    <Bold>Section</Bold> block to
+                group a list of other blocks. Use the
+                    <Bold>List</Bold>
+                    block to create a list and
+                    <Bold>Table</Bold>
+                    block to make a table.
+                </Paragraph>
+                <List>
+                    <ListItem Foreground="Green">
+                        <Paragraph>This is item 1</Paragraph>
+                    </ListItem>
+                    <ListItem Foreground="Blue">
+                        <Paragraph>This is item 2</Paragraph>
+                    </ListItem>
+                    <ListItem Foreground="Red">
+                        <Paragraph>This is item 3</Paragraph>
+                    </ListItem>
+                </List>
+                <Table BorderThickness="1"
+                   BorderBrush="LightSteelBlue"
+                   TextAlignment="Center"
+                   CellSpacing="16"
+                   Padding="4">
+                    <TableRowGroup>
+                        <TableRow Background="SkyBlue">
+                            <TableCell>
+                                <Paragraph>1</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>2</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>3</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="Beige">
+                            <TableCell>
+                                <Paragraph>4</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>5</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>6</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </DockPanel>
+</Window>

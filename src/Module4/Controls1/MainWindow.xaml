@@ -1,0 +1,70 @@
+﻿<Window x:Class="Controls1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sym="http://www.symbolicon.net/symbion"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ControlTemplate x:Key="template1" TargetType="{x:Type sym:MetroButton}">
+            <Grid x:Name="PART_ROOT">
+                <Rectangle x:Name="PART_BORDER" Opacity="0.5"
+                            Stroke="{TemplateBinding BorderBrush}"
+                            StrokeThickness="{TemplateBinding StrokeThickness}"
+                            Fill="{TemplateBinding Background}" />
+                <Path x:Name="PART_ICON"
+                            Stretch="Fill" Opacity="0.5"
+                            Margin="{TemplateBinding Padding}"
+                            Stroke="{TemplateBinding BorderBrush}"
+                            StrokeThickness="{TemplateBinding StrokeThickness}"
+                            Data="{TemplateBinding Icon}"
+                            IsHitTestVisible="False" />
+                <Rectangle x:Name="PART_OVERLAY"
+                            Fill="White" Opacity="0"
+                            IsHitTestVisible="False" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="PART_BORDER" Property="Opacity" Value="0.75" />
+                    <Setter TargetName="PART_ICON" Property="Opacity" Value="0.75" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="PART_BORDER" Property="Opacity" Value="1" />
+                    <Setter TargetName="PART_ICON" Property="Opacity" Value="1" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="PART_OVERLAY" Property="Opacity" Value="0.75" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style TargetType="{x:Type sym:MetroButton}">
+            <Setter Property="Template"
+                    Value="{StaticResource template1}" />
+        </Style>
+        <PathGeometry x:Key="geo1">
+            M0.25,0.5
+            L0.75,0.5
+            M0.5,0.25
+            L0.25,0.5
+            L0.5,0.75
+        </PathGeometry>
+    </Window.Resources>
+    <Grid>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <sym:MetroButton x:Name="btn1" StrokeThickness="4" Padding="8" Icon="{StaticResource geo1}" Click="Btn1_Click" />
+            <sym:MetroButton x:Name="btn2" Icon="{StaticResource geo1}" IsEnabled="False" />
+            <sym:MetroButton x:Name="btn3" />
+            <UniformGrid Rows="2" Columns="3">
+                <sym:PhotoImage PhotoSource="Images/carddeck.jpg" PhotoTitle="Card Deck" PhotoBorderBrush="Maroon" />
+                <sym:PhotoImage PhotoSource="Images/korner.jpg" PhotoTitle="Korder" />
+                <sym:PhotoImage PhotoSource="Images/moma.jpg" PhotoTitle="MOMA" />
+                <sym:PhotoImage PhotoSource="Images/summertree.jpg" PhotoTitle="Summer Tree"/>
+                <sym:PhotoImage PhotoSource="Images/vintage.jpg" PhotoTitle="Vintage"/>
+                <sym:PhotoImage PhotoSource="Images/babybear.jpg" PhotoTitle="Baby Bear"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SymBank" Class="SymBankDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=SymBank;Integrated Security=True" SettingsObjectName="SymBank.Properties.Settings" SettingsPropertyName="SymBankConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Accounts" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Type" Type="AccountType" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Creator" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Picture" Type="System.Byte[]" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Account_Transaction" Member="Transactions" ThisKey="Code" OtherKey="Source" Type="Transaction" />
+      <Association Name="Account_Transaction1" Member="Transactions1" ThisKey="Code" OtherKey="Target" Type="Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Source" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Target" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Creator" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Account_Transaction" Member="Account" ThisKey="Source" OtherKey="Code" Type="Account" IsForeignKey="true" />
+      <Association Name="Account_Transaction1" Member="Account1" ThisKey="Target" OtherKey="Code" Type="Account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AccountAdd" Method="AccountAdd">
+    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="ZipCode" Parameter="zipCode" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="Creator" Parameter="creator" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Created" Parameter="created" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Picture" Parameter="picture" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AccountTransfer" Method="AccountTransfer">
+    <Parameter Name="Source" Parameter="source" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Target" Parameter="target" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Creator" Parameter="creator" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Created" Parameter="created" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AccountCredit" Method="AccountCredit">
+    <Parameter Name="Source" Parameter="source" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Creator" Parameter="creator" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Created" Parameter="created" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AccountDebit" Method="AccountDebit">
+    <Parameter Name="Source" Parameter="source" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Creator" Parameter="creator" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Created" Parameter="created" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

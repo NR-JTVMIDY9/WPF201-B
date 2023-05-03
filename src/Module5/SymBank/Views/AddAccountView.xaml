@@ -1,0 +1,63 @@
+﻿<v:BaseView x:Class="SymBank.Views.AddAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SymBank.Views"
+             xmlns:v="clr-namespace:SymBank.Views"
+             xmlns:vm="clr-namespace:SymBank.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+            Region="MainRegion" Header="New Account"
+            Loaded="BaseView_Loaded">
+    <v:BaseView.DataContext>
+        <vm:AddAccountViewModel />
+    </v:BaseView.DataContext>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="8">
+                <Label Content="_Code" Style="{DynamicResource LabelStyle1}" Target="{Binding ElementName=txtCode}"/>
+                <TextBox x:Name="txtCode"
+                         Text="{Binding Account.Code}"
+                         Style="{DynamicResource InputStyle1}"
+                         Width="100"
+                         MaxLength="8"/>
+                <Label Content="_Name" Style="{DynamicResource LabelStyle1}" Target="{Binding ElementName=txtName}"/>
+                <TextBox x:Name="txtName"
+                         Style="{DynamicResource InputStyle1}" Width="200" MaxLength="30"
+                         Text="{Binding AccountName, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
+                <Label Content="_Type" Style="{DynamicResource LabelStyle1}" Target="{Binding ElementName=cbxType}"/>
+                <ComboBox x:Name="cbxType" Style="{DynamicResource InputStyle1}" Width="200" ItemsSource="{Binding AccountTypes}" SelectedItem="{Binding Account.Type}"/>
+                <Label Content="_Zip Code" Style="{DynamicResource LabelStyle1}" Target="{Binding ElementName=txtZipCode}"/>
+                <TextBox x:Name="txtZipCode" 
+                         Style="{DynamicResource InputStyle1}"
+                         Width="100" MinHeight="1" MaxLength="5"
+                         Text="{Binding AccountZipCode, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+                <Label Content="_Balance" Style="{DynamicResource LabelStyle1}" Target="{Binding ElementName=txtBalance}" />
+                <TextBox x:Name="txtBalance"
+                         Style="{DynamicResource InputStyle1}"
+                         Width="100" MaxLength="12"
+                         Text="{Binding OpeningBalance, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="8" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Content="Add" Style="{DynamicResource ButtonStyle1}" Command="{Binding AddCommand, Mode=OneWay}"/>
+                <Button Content="Clear" Style="{DynamicResource ButtonStyle1}" Command="{Binding ClearCommand, Mode=OneWay}"/>
+                <Button Content="Close" Style="{DynamicResource ButtonStyle1}" Command="{Binding CloseViewCommand, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="8">
+                <Border x:Name="bdrPicture" BorderBrush="Gray" BorderThickness="2" Background="LightGray" Padding="8" Margin="4">
+                    <Image x:Name="imgPicture" Width="120" Height="120" Source="{Binding Account.Picture}"/>
+                </Border>
+                <Button Content="Load Picture" Style="{DynamicResource ButtonStyle1}" Command="{Binding LoadPictureCommand, Mode=OneWay}"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</v:BaseView>
